@@ -1,0 +1,1 @@
+export const EXCHANGE_RATE_URL = 'http://localhost:8005/exchange';
