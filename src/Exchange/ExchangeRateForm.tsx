@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useForm } from "../hooks/useForm";
 import { ExchangeRate, ExchangeRateList } from "./ExchangeRateList";
+import { formatNumber } from "../helpers/numbers";
+import { calculateCZKToCurrency } from "../helpers/rates";
 
 interface Props {
     exchangeRates: ExchangeRateList;
@@ -33,10 +35,8 @@ export default function ExchangeRateForm({ exchangeRates }: Props) {
             </select>
         </Row>
         {!!selectedRate && <ResultRow>
-            {values.amount.toFixed(2).toLocaleString()} CZK <span> equals to </span>
-            {(values.amount / selectedRate?.Rate
-                * selectedRate?.Amount)
-                .toFixed(2).toLocaleString()} {selectedRate.Code}
+            {formatNumber(values.amount)} CZK <span> equals to </span>
+            {formatNumber(calculateCZKToCurrency(selectedRate, values.amount))} {selectedRate.Code}
         </ResultRow>}
     </Form>;
 }
