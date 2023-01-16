@@ -3,6 +3,7 @@ import { EXCHANGE_RATE_URL } from "./const";
 import { Loading } from "./Loading";
 import styled from "styled-components";
 import ExchangeRateForm from "./Exchange/ExchangeRateForm";
+import ExchangeRateTable from "./Exchange/ExchangeRateTable";
 
 function App() {
     const { isLoading, error, data: exchangeRates } = useQuery('exchangeRate', () =>
@@ -24,8 +25,9 @@ function App() {
     
     return (
         <Centered>
-            <Logo src="exchange512.png" />
+            <Logo src="exchange512.png" title="Logo" />
             <ExchangeRateForm exchangeRates={exchangeRates} />
+            <ExchangeRateTable exchangeRates={exchangeRates} />
         </Centered>
     );
 }
