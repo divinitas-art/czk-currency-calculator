@@ -14,7 +14,7 @@ export default function wait(timeoutMs: number): Promise<void> {
 const app = express();
 const PORT = 8005;
 
-let latestExchangeData = {};
+let latestExchangeData = null;
 
 function getCurrentData() {
     return new Promise((resolve: (value: ExchangeRateList) => void, reject: (error: Error) => void) => {
