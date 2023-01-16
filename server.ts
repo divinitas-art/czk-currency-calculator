@@ -45,7 +45,7 @@ function getCurrentData() {
                 } catch (e) {
                     console.error(e);
                     clearTimeout(timeoutId);
-                    reject(new Error('shit fuck'));
+                    reject(new Error('Error getting data...'));
                 }
             });
         });
