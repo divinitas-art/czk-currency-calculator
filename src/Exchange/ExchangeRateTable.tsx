@@ -25,8 +25,6 @@ export default function ExchangeRateTable({ exchangeRates }: Props) {
 }
 
 const Table = styled.table`
-    margin-left: auto;
-    margin-right: auto;
     th, td {
         padding: 2px 10px;
         border: 1px solid #eee;

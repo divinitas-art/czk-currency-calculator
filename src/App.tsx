@@ -33,8 +33,9 @@ function App() {
 }
 
 export const Centered = styled.div`
-    margin: auto;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 export const Error = styled.p`
     border: 1px solid #3a0000;
