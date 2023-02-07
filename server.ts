@@ -14,7 +14,7 @@ export default function wait(timeoutMs: number): Promise<void> {
 const app = express();
 const PORT = 8005;
 
-let latestExchangeData = null;
+let latestExchangeData: null | ExchangeRateList = null;
 
 function getCurrentData() {
     return new Promise((resolve: (value: ExchangeRateList) => void, reject: (error: Error) => void) => {
@@ -78,7 +78,7 @@ async function exchangeCSVToExchangeRateList(data: string): Promise<ExchangeRate
 }
 
 async function loopGetNewData() {
-    while (true) {        
+    while (true) {
         await refreshExchangeData();
         const hour = 60 * 60 * 1000;
         await wait(hour); //every hour
@@ -88,7 +88,7 @@ async function loopGetNewData() {
 async function refreshExchangeData() {
     latestExchangeData = await getCurrentData();
 }
-  
+
 app.get('/exchange', cors(), async (req, res) => {
     // make sure we have data
     if (!latestExchangeData) {
